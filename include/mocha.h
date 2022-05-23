@@ -7,7 +7,7 @@ class Mocha:public EspressoBased
 public:
     Mocha();
     Mocha(const Mocha& cap);
-	~Mocha();
+	virtual ~Mocha();
     void operator=(const Mocha& cap);
 
     virtual std::string get_name();

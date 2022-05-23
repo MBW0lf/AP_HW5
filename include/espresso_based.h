@@ -1,5 +1,6 @@
 #ifndef ESPRESSO_BASED_H
 #define ESPRESSO_BASED_H
+#include <iostream>
 #include <string>
 #include <vector>
 #include "ingredient.h"
@@ -13,7 +14,7 @@ public:
     void brew();
     std::vector<Ingredient*>& get_ingredients();
 
-    ~EspressoBased();
+    virtual ~EspressoBased();
 
 protected:
     EspressoBased();

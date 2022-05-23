@@ -1,12 +1,13 @@
 #ifndef INGREDIENT_H
 #define INGREDIENT_H
+#include <string>
 
 class Ingredient
 {
 public:
     double get_price_unit(){return price_unit;}
     size_t get_units(){return units;}
-    std::string get_name(){return name;}
+    virtual std::string get_name(){return name;}
 
     double price(){return units * price_unit;}
     

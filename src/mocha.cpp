@@ -13,18 +13,92 @@ Mocha::Mocha()
 }
 //////////////////////////////////////////////////////////
 Mocha::Mocha(const Mocha& cap)
+    :EspressoBased{ cap }
 {
-    side_items = cap.side_items;
-    name = cap.name;
-    ingredients = cap.ingredients;
-}
+    for (Ingredient* component : cap.side_items)
+    {
+        if(component->get_name() == "Cinnamon")
+        {
+            side_items.push_back(new Cinnamon{ component->get_units() });
+        }
+        else if(component->get_name() == "Chocolate")
+        {
+            side_items.push_back(new Chocolate{ component->get_units() });
+        }
+        else if(component->get_name() == "Sugar")
+        {
+            side_items.push_back(new Sugar{ component->get_units() });
+        }
+        else if(component->get_name() == "Cookie")
+        {
+            side_items.push_back(new Cookie{ component->get_units() });
+        }
+        else if(component->get_name() == "Espresso")
+        {
+            side_items.push_back(new Espresso{ component->get_units() });
+        }
+        else if(component->get_name() == "Milk")
+        {
+            side_items.push_back(new Milk{ component->get_units() });
+        }
+        else if(component->get_name() == "MilkFoam")
+        {
+            side_items.push_back(new MilkFoam{ component->get_units() });
+        }
+        else if(component->get_name() == "Water")
+        {
+            side_items.push_back(new Water{ component->get_units() });
+        }
+
+    }
+};
 //////////////////////////////////////////////////////////
 void Mocha::operator=(const Mocha& cap)
 {
-    side_items = cap.side_items;
-    name = cap.name;
-    ingredients = cap.ingredients;
-}
+    if(this == &cap)
+    {
+        return;
+    }
+
+    side_items.clear();
+
+    for (Ingredient* component : cap.side_items)
+    {
+        if(component->get_name() == "Cinnamon")
+        {
+            side_items.push_back(new Cinnamon{ component->get_units() });
+        }
+        else if(component->get_name() == "Chocolate")
+        {
+            side_items.push_back(new Chocolate{ component->get_units() });
+        }
+        else if(component->get_name() == "Sugar")
+        {
+            side_items.push_back(new Sugar{ component->get_units() });
+        }
+        else if(component->get_name() == "Cookie")
+        {
+            side_items.push_back(new Cookie{ component->get_units() });
+        }
+        else if(component->get_name() == "Espresso")
+        {
+            side_items.push_back(new Espresso{ component->get_units() });
+        }
+        else if(component->get_name() == "Milk")
+        {
+            side_items.push_back(new Milk{ component->get_units() });
+        }
+        else if(component->get_name() == "MilkFoam")
+        {
+            side_items.push_back(new MilkFoam{ component->get_units() });
+        }
+        else if(component->get_name() == "Water")
+        {
+            side_items.push_back(new Water{ component->get_units() });
+        }
+
+    }
+};
 //////////////////////////////////////////////////////////
 double Mocha::price()
 {
@@ -53,10 +127,7 @@ std::vector<Ingredient*>& Mocha::get_side_items()
 //////////////////////////////////////////////////////////
 Mocha::~Mocha()
 {
-    for(auto& i : side_items)
-    {
-        i = nullptr;
+    for(const auto& i : side_items)
         delete i;
-    }
     side_items.clear();
 }

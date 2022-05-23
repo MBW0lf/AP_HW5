@@ -1,7 +1,7 @@
 #ifndef SUB_INGREDIENTS_H
 #define SUB_INGREDIENTS_H
 #include "ingredient.h"
-
+/*
 /////Cinnamon///////////////////////////////////////////////////
 class Cinnamon : public Ingredient
 {
@@ -90,5 +90,24 @@ public:
 
     virtual std::string get_name() {return this->name;}
 };
+*/
+#define DEFCLASS(Ingredient_name, Price)\
+    class Ingredient_name : public Ingredient {\
+    public:\
+        Ingredient_name(size_t units): Ingredient { Price, units }\
+        {\
+            name = #Ingredient_name;\
+        }\
+        virtual std::string get_name() { return name; }\
+    };
+
+DEFCLASS(Cinnamon, 5);
+DEFCLASS(Chocolate, 5);
+DEFCLASS(Sugar, 1);
+DEFCLASS(Cookie, 10);
+DEFCLASS(Espresso, 15);
+DEFCLASS(Milk, 10);
+DEFCLASS(MilkFoam, 5);
+DEFCLASS(Water, 1);
 
 #endif // SUB_INGREDIENTS_H
